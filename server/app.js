@@ -1,12 +1,27 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 const app = express();
+
+dotenv.config({
+    path: './config.env'
+});
+
+const PORT = process.env.PORT
+
+require('./db/conn')
+
+const middleware = (req, res, next) => {
+    console.log("Hi I'm middleware")
+    next()
+}
 
 app.get('/', (req, res) => {
     res.send("<h1>Hello from server</h1>");
 })
 
-app.get('/about', (req, res) => {
+app.get('/about', middleware, (req, res) => {
     res.send("<h1>About page</h1>");
 })
 
@@ -23,5 +38,5 @@ app.get('/signup', (req, res) => {
 })
 
 app.listen(3001, () => {
-    console.log("Server running at port 3001");
+    console.log(`Server running at port ${PORT}`);
 })
