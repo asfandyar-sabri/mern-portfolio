@@ -12,6 +12,8 @@ const PORT = process.env.PORT
 
 require('./db/conn')
 
+const user = require('./models/user')
+
 const middleware = (req, res, next) => {
     console.log("Hi I'm middleware")
     next()
