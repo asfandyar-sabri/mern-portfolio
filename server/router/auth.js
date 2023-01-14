@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs')
 
 require("../db/conn")
 const user = require('../models/user')
@@ -66,23 +67,64 @@ router.post('/register', async (req, res) => {
             return res.status(422).json({
                 error: "Email already exists"
             })
-        }
-
-        const User = new user({
-            name, email, phone, work, password, cpassword
-        });
-    
-        await User.save()
-
-        res.status(201).json({
-            message: "User registered successfully"
-        })
+        } else if (password !== cpassword) {
+            return res.status(422).json({
+                error: "Passwords do not match"
+            })
+        } else {
+            const User = new user({
+                name, email, phone, work, password, cpassword
+            });
         
+            await User.save()
+    
+            res.status(201).json({
+                message: "User registered successfully"
+            })
+        }        
     } catch(err) {
         console.log("Error occured", err)
     }
 
 
 })
+
+router.post('/signin', async (req, res) => {
+
+    try{
+        const { email, password } = req.body;
+        
+        if (!email || !password) {
+            return res.status(400).json({
+                error: "Kindly enter credentials"
+            })
+        }
+
+        const userLogin = await user.findOne({
+            "email": email
+        })
+
+        if (userLogin) {
+            const verifyPassword = await bcrypt.compare(password, userLogin.password);
+            console.log("Verify Password", verifyPassword);
+            
+            if (!verifyPassword) {
+                res.status(400).json({
+                    error: "Invalid credentials"
+            })
+            } else {
+                res.status(200).json({
+                    "message": "User logged in successfully"
+            })
+            } 
+        } else {
+            res.status(400).json({
+                error: "Invalid credentials"
+            });
+        }
+    } catch (err){
+        console.log("Error occured while logging in ", err)
+    }
+});
 
 module.exports = router
