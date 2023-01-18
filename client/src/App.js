@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.css' 
 import './App.css'
 
 import Navbar from './components/Navbar';
@@ -8,6 +10,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import ErrorPage from './components/ErrorPage';
 
 const App = () => {
 	return(
@@ -19,6 +22,7 @@ const App = () => {
 				<Route path='/contact' element={<Contact />}/>
 				<Route path='/login' element={<Login />}/>
 				<Route path='/signup' element={<Signup />}/>
+				<Route path='*' element={<ErrorPage />}/>
 			</Routes>
     	</>
 	)
