@@ -24,7 +24,7 @@ const Login = () => {
                                         <i className='zmdi zmdi-email material-icons-name'></i>
                                     </label>
                                     <input
-                                        type='email' name='email' id='email' automComplete='off' placeholder="Your Email" 
+                                        type='email' name='email' id='email' autoComplete='off' placeholder="Your Email" 
                                     />
                                 </div>
 
@@ -33,7 +33,7 @@ const Login = () => {
                                         <i className='zmdi zmdi-lock material-icons-name'></i>
                                     </label>
                                     <input
-                                        type='password' name='password' id='password' automComplete='off' placeholder="Your Password" 
+                                        type='password' name='password' id='password' autoComplete='off' placeholder="Your Password" 
                                     />
                                 </div>
 

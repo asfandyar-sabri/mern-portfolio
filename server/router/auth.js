@@ -53,6 +53,7 @@ router.get('/', (req, res) => {
 router.post('/register', async (req, res) => {
 
     const { name, email, phone, work, password, cpassword } = req.body;
+    console.log("Data coming is: \n", req.body)
 
     if(!name || !email || !phone || !work || !password || !cpassword)
         return res.status(422).json({

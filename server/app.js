@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 const app = express();
 
@@ -15,6 +16,7 @@ const user = require('./models/user')
 const PORT = process.env.PORT
 
 app.use(express.json());
+app.use(cors());
 app.use(require('./router/auth'));
 
 // middleware

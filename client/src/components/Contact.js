@@ -64,17 +64,17 @@ const Contact = () => {
 											<input type='text' id='contact_form_name' 
 												className='contact_form_name input_field' 
 												placeholder='Your Name'
-												required="true" />
+												required={true} />
 
 											<input type='email' id='contact_form_email' 
 												className='contact_form_email input_field' 
 												placeholder='Your Email'
-												required="true" />
+												required={true} />
 
 											<input type='number' id='contact_form_phone' 
 												className='contact_form_phone input_field' 
 												placeholder='Your Phone Number'
-												required="true" />
+												required={true} />
 										</div>
 
 										<div className='contact_form_text mt-5'>
