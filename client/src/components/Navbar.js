@@ -1,13 +1,16 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css'
-import { NavLink } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.css';
+import { NavLink } from 'react-router-dom';
+import logo from '../images/logo.jpg'
 
 const Navbar = () => {
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        	<nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
-                    <NavLink className="navbar-brand" hretof="#">Navbar</NavLink>
+                    <NavLink className="navbar-brand" to="#">
+						<img src={logo} alt='logo here' width={50} height={50}></img>
+					</NavLink>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
