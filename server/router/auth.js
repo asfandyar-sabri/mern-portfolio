@@ -93,6 +93,8 @@ router.post('/signin', async (req, res) => {
 
     let token;
 
+    console.log("Request body is: ", req.body);
+
     try{
         const { email, password } = req.body;
         

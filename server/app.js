@@ -20,18 +20,11 @@ app.use(cors());
 app.use(require('./router/auth'));
 
 // middleware
-const middleware = (req, res, next) => {
-    console.log("Hi I'm middleware")
-    next()
-}
 
-app.get('/', (req, res) => {
-    res.send("<h1>Hello from server</h1>");
-})
 
-app.get('/about', middleware, (req, res) => {
-    res.send("<h1>About page</h1>");
-})
+// app.get('/about', (req, res) => {
+//     res.send("<h1>About page</h1>");
+// })
 
 app.get('/contact', (req, res) => {
     res.send("<h1>Contact page</h1>");
