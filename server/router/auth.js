@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+
+const authenticate = require('../middlewares/authenticate');
+
+router.use(cookieParser());
 
 require("../db/conn")
 const user = require('../models/user')
@@ -138,4 +143,8 @@ router.post('/signin', async (req, res) => {
     }
 });
 
-module.exports = router
+router.get('/about', authenticate, (req, res) => {
+    res.send(req.rootUser);
+})
+
+module.exports = router;
